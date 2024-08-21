@@ -224,4 +224,3 @@ console.log(sassFilter);
 let dockerFilter = coursesArray.filter(value => value.modules.includes('docker'));
 console.log(dockerFilter);
 
-
