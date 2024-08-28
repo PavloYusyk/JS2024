@@ -1,0 +1,44 @@
+.wrap{
+    width: 100px;
+    height: 100px;
+    background: aquamarine;
+
+}
+.simpsonsDiv{
+    width: 100%;
+    border: 2px solid red;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.member{
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    border: 1px solid black;
+}
+.member h2{
+    margin: 10px;
+}
+.member p{
+    margin: 10px;
+}
+
+.courses{
+    border: 2px gray dashed;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+.course{
+    width: 16%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px red dashed;
+}
