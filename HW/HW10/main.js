@@ -3,7 +3,8 @@ let register = document.forms.register;
 
 let users = document.createElement('div');
 users.style.display = 'flex';
-
+let userChek = JSON.parse(localStorage.getItem('userChek')) || [];
+start();
 register.onsubmit = function (objectUser){
     objectUser.preventDefault();
     let name = register.name.value;
@@ -11,10 +12,25 @@ register.onsubmit = function (objectUser){
     let age = register.age.value;
     let user = {name,surname,age}
 
-    let userChek = JSON.parse(localStorage.getItem('userChek')) || [];
+
     userChek.push(user);
     localStorage.setItem('userChek', JSON.stringify(userChek));
+    let userDiv = document.createElement('div');
+    userDiv.style.marginRight = '10px';
+    let hName = document.createElement('h2');
+    hName.innerText = `Name: ${user.name}`;
 
+    let hSurname = document.createElement('h2');
+    hSurname.innerText = `Surname: ${user.surname}`;
+
+    let hAge = document.createElement('h2');
+    hAge.innerText = `Age: ${user.age}`;
+
+    userDiv.append(hName,hSurname,hAge);
+    users.appendChild(userDiv);
+
+}
+function start () {
     for (const userItem of userChek) {
         let userDiv = document.createElement('div');
         userDiv.style.marginRight = '10px';
@@ -30,10 +46,6 @@ register.onsubmit = function (objectUser){
         userDiv.append(hName,hSurname,hAge);
         users.appendChild(userDiv);
     }
-
-
-
-
 }
 document.body.appendChild(users);
 
