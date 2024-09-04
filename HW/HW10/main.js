@@ -77,16 +77,18 @@ document.body.appendChild(sessionDiv);
 
 // =========================
 //     зробити масив на 100 об'єктів та дві кнопки prev next
+// при завантажені сторінки з'являються перші 10 об'єктів.
+//     При натисканні next виводяться настпні 10 об'єктів
+// При натисканні prev виводяться попередні 10 об'єктів
+
 let arrObj = [];
 for (let i = 0; i < 100; i++){
     arrObj.push({name: `Obj ${i + 1}`,id: `${i + 1}`});
 }
 
 let pageDiv = document.createElement('div');
-let pageNumber = 1;
-
-
 let displayObj = document.createElement('div');
+
 function createObjPage (first,second) {
     for (let i = first; i <= second; i++){
         let objIdName = document.createElement('h2');
@@ -95,6 +97,9 @@ function createObjPage (first,second) {
         displayObj.appendChild(objIdName);
     }
 }
+
+let pageNumber = 1;
+
 let prevButton = document.createElement('button');
 prevButton.innerText = '< Prev';
 prevButton.onclick = function (){
@@ -150,9 +155,7 @@ console.log(pageNumber)
 
 pageDiv.append(displayObj,prevButton,nextButton);
 document.body.appendChild(pageDiv);
-// при завантажені сторінки з'являються перші 10 об'єктів.
-//     При натисканні next виводяться настпні 10 об'єктів
-// При натисканні prev виводяться попередні 10 об'єктів
+
 //
 // - створити конвертор ваги з кг в фунти. данні заповнюються через інпут. При введенні даних обрахунок стається миттєво, без натискань додаткових кнопок
 //
