@@ -77,6 +77,79 @@ document.body.appendChild(sessionDiv);
 
 // =========================
 //     зробити масив на 100 об'єктів та дві кнопки prev next
+let arrObj = [];
+for (let i = 0; i < 100; i++){
+    arrObj.push({name: `Obj ${i + 1}`,id: `${i + 1}`});
+}
+
+let pageDiv = document.createElement('div');
+let pageNumber = 1;
+
+
+let displayObj = document.createElement('div');
+function createObjPage (first,second) {
+    for (let i = first; i <= second; i++){
+        let objIdName = document.createElement('h2');
+        console.log(arrObj[i])
+        objIdName.innerText = `ID: ${arrObj[i].id}, Name: ${arrObj[i].name}}`;
+        displayObj.appendChild(objIdName);
+    }
+}
+let prevButton = document.createElement('button');
+prevButton.innerText = '< Prev';
+prevButton.onclick = function (){
+    pageNumber--;
+    if (pageNumber < 1){
+        pageNumber = 10;
+    }
+}
+
+let nextButton = document.createElement('button');
+nextButton.innerText = 'Next >';
+nextButton.onclick = function () {
+    pageNumber++;
+    if (pageNumber > 10){
+        pageNumber = 1;
+    }
+}
+
+console.log(pageNumber)
+
+    switch (pageNumber){
+        case 1:
+            createObjPage(0,9);
+            break
+        case 2:
+            createObjPage(10,19);
+            break
+        case 3:
+            createObjPage(20,29);
+            break;
+        case 4:
+            createObjPage(30,39);
+            break;
+        case 5:
+            createObjPage(40,49);
+            break;
+        case 6:
+            createObjPage(50,59);
+            break;
+        case 7:
+            createObjPage(60,69);
+            break;
+        case 8:
+            createObjPage(70,79);
+            break;
+        case 9:
+            createObjPage(70,79);
+            break;
+        case 10:
+            createObjPage(90,99);
+            break
+    }
+
+pageDiv.append(displayObj,prevButton,nextButton);
+document.body.appendChild(pageDiv);
 // при завантажені сторінки з'являються перші 10 об'єктів.
 //     При натисканні next виводяться настпні 10 об'єктів
 // При натисканні prev виводяться попередні 10 об'єктів
