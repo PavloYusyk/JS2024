@@ -200,9 +200,6 @@ offOn.onclick = function () {
     }
 }
 
-function update () {
-
-}
 clickDiv.append(elementH2,offOn);
 document.body.appendChild(clickDiv);
 
