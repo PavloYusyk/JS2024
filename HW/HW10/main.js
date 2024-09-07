@@ -88,17 +88,21 @@ for (let i = 0; i < 100; i++){
 
 let pageDiv = document.createElement('div');
 let displayObj = document.createElement('div');
+pageDiv.appendChild(displayObj);
+
 
 function createObjPage (first,second) {
+    displayObj.innerHTML = '';
     for (let i = first; i <= second; i++){
         let objIdName = document.createElement('h2');
         console.log(arrObj[i])
-        objIdName.innerText = `ID: ${arrObj[i].id}, Name: ${arrObj[i].name}}`;
+        objIdName.innerText = `ID: ${arrObj[i].id}, Name: ${arrObj[i].name}`;
         displayObj.appendChild(objIdName);
     }
 }
 
 let pageNumber = 1;
+updatePage()
 
 let prevButton = document.createElement('button');
 prevButton.innerText = '< Prev';
@@ -107,6 +111,7 @@ prevButton.onclick = function (){
     if (pageNumber < 1){
         pageNumber = 10;
     }
+    updatePage()
 }
 
 let nextButton = document.createElement('button');
@@ -116,10 +121,12 @@ nextButton.onclick = function () {
     if (pageNumber > 10){
         pageNumber = 1;
     }
+    updatePage()
 }
 
 console.log(pageNumber)
 
+function updatePage (){
     switch (pageNumber){
         case 1:
             createObjPage(0,9);
@@ -152,25 +159,74 @@ console.log(pageNumber)
             createObjPage(90,99);
             break
     }
+}
 
 pageDiv.append(displayObj,prevButton,nextButton);
 document.body.appendChild(pageDiv);
 
 //
 // - створити конвертор ваги з кг в фунти. данні заповнюються через інпут. При введенні даних обрахунок стається миттєво, без натискань додаткових кнопок
-//
+let inputKg = document.createElement('input');
+inputKg.type = 'number';
+document.body.appendChild(inputKg);
+let outFt = document.createElement('h2');
+
+inputKg.oninput = function () {
+    let kg = +this.value;
+    let ft = kg * 2.2;
+
+    outFt.innerText = `${kg} kg = ${ft} ft.`
+    document.body.append(outFt);
+}
+
 //
 // - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
+let clickDiv = document.createElement('div');
+clickDiv.style.marginTop = '20px';
+let elementH2 = document.createElement('h2');
+elementH2.setAttribute('id','text');
+elementH2.innerText = 'hello';
+
+let offOn = document.createElement('button');
+
+offOn.innerText = 'Click me!'
+
+
+offOn.onclick = function () {
+    if (elementH2.style.display === 'none'){
+        elementH2.style.display = 'flex';
+    }else {
+        elementH2.style.display = 'none';
+    }
+}
+
+function update () {
+
+}
+clickDiv.append(elementH2,offOn);
+document.body.appendChild(clickDiv);
+
+
 //
 //
 //     - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
-//
-//
-// *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
-//     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
-// (Додатковачастина для завдання)
-//
-// *** (подібне було вище, але...будьте уважні в другій частині) створити сторінку з довільним блоком, в середині якого є значення "100грн"
-// при перезавантаженні сторінки до значаення додається по 10грн, але !!!
-//     зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.
-//     При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається
+let ageCheckDiv = document.createElement('div');
+let ageInput = document.createElement('input');
+ageInput.type = 'number';
+
+let checkButton = document.createElement('button');
+checkButton.innerText = 'Check age'
+let result = document.createElement('h2');
+
+checkButton.onclick = function (){
+    let userAge = +ageInput.value;
+    if (userAge < 18){
+
+        result.innerText = 'Cartoon';
+    }else {
+        result.innerText = 'Content 18+';
+    }
+}
+
+ageCheckDiv.append(ageInput,checkButton,result);
+document.body.appendChild(ageCheckDiv)
